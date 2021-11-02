@@ -42,12 +42,11 @@ public class AccountController {
     }
 
     @GetMapping("/login")
-    public UUID login(@RequestParam String username, @RequestParam String password) {
+    public Account login(@RequestParam String username, @RequestParam String password) {
         return accountRepository.findAll()
                 .stream()
                 .filter(acc -> acc.getUsername().equals(username) && acc.getPassword().equals(password))
                 .findFirst()
-                .get()
-                .getId();
+                .get();
     }
 }
